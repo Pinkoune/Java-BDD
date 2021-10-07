@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.util.ArrayList;
 
 public class Modele {
 	//Attributs
@@ -75,21 +76,34 @@ public class Modele {
 		return rep;
 	}
 	
-	public void affichage() {
+	public ArrayList<Contact> affichage() {
+		//Attributs
+		ArrayList<Contact> lesContacts;
+        lesContacts = new ArrayList<Contact>();
+        String req;
+        int num;
+        String nom;
+        String prenom;
+        String email;
+        String commentaire;
 		//Selection
 		try {
 			st = connexion.createStatement();
 			ResultSet rs = st.executeQuery("SELECT * FROM contacts");
 			// Pour accéder à chacune des lignes du résultat de la requête :
 			while (rs.next()) {
-			num = rs.getInt("numero");
-			nom = rs.getString(2);
-			 System.out.println(" Code = " + num + nom) ;
+				num = rs.getInt("numero");
+				nom = rs.getString(2);
+				prenom = rs.getString(3);
+				email = rs.getString(4);
+				commentaire = rs.getString(5);
+				lesContacts.add(new Contact(num,nom,prenom,email,commentaire));
 			}
 			rs.close() ;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return lesContacts;
 	}
 	
 	/*st = connexion.createStatement();
