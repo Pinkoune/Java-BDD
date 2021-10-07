@@ -5,9 +5,8 @@ public class Modele {
 	//Attributs
 	private Connection connexion;
 	private Statement st;
+	private ResultSet rs;
 	private int count;
-	private int num;
-	private String nom;
 	
 	public Modele() {
 		
@@ -89,10 +88,11 @@ public class Modele {
 		//Selection
 		try {
 			st = connexion.createStatement();
-			ResultSet rs = st.executeQuery("SELECT * FROM contacts");
+			req = "SELECT * FROM contacts";
+			rs = st.executeQuery(req);
 			// Pour accéder à chacune des lignes du résultat de la requête :
 			while (rs.next()) {
-				num = rs.getInt("numero");
+				num = rs.getInt(1);
 				nom = rs.getString(2);
 				prenom = rs.getString(3);
 				email = rs.getString(4);

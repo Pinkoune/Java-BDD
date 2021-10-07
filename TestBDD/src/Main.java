@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -70,6 +71,11 @@ public class Main {
 	}
 	
 	public static void affichageSQL(Modele unModele) {
-		System.out.println(unModele.affichage());
+		ArrayList<Contact> lesContacts = new ArrayList<Contact>();
+		lesContacts = unModele.affichage();
+		for(Contact unContact : lesContacts) {
+			System.out.println(unContact.toString());
+		}
+		unModele.deconnexion();
 	}
 }
