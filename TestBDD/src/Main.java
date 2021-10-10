@@ -11,7 +11,7 @@ public class Main {
 		int choix = 0;
 		
 		do {
-			System.out.println("{-------Intéraction avec la BDD-------}");
+			System.out.println("{-------Intï¿½raction avec la BDD-------}");
 			System.out.println("1 - Ajouter");
 			System.out.println("2 - Supprimer");
 			System.out.println("3 - Afficher");
@@ -34,11 +34,11 @@ public class Main {
 				break;
 				
 			case 4:
-				System.out.println("Vous avez quitté le menu.");
+				System.out.println("Vous avez quittï¿½ le menu.");
 				break;
 				
 			default:
-				System.out.println("Entrez un des choix présentés.");
+				System.out.println("Entrez un des choix prï¿½sentï¿½s.");
 				break;
 				
 			}
@@ -46,12 +46,12 @@ public class Main {
 	}
 	
 	public static void insererSQL(Modele unModele) {
-		System.out.println("Entrez le numéro : ");
+		System.out.println("Entrez le numï¿½ro : ");
 		int num = clavier.nextInt();
 		clavier.nextLine();
 		System.out.println("Entrez le nom : ");
 		String nom = clavier.nextLine();
-		System.out.println("Entrez le prénom : ");
+		System.out.println("Entrez le prï¿½nom : ");
 		String prenom = clavier.nextLine();
 		System.out.println("Entrez le mail : ");
 		String mail = clavier.nextLine();
@@ -63,7 +63,7 @@ public class Main {
 	}
 	
 	public static void supprimerSQL(Modele unModele) {
-		System.out.println("Entrez le numéro : ");
+		System.out.println("Entrez le numï¿½ro : ");
 		int numero = clavier.nextInt();
 		unModele.connexion();
 		System.out.println(unModele.supprimer(numero));
@@ -72,10 +72,7 @@ public class Main {
 	
 	public static void affichageSQL(Modele unModele) {
 		ArrayList<Contact> lesContacts = new ArrayList<Contact>();
-		lesContacts = unModele.affichage();
-		for(Contact unContact : lesContacts) {
-			System.out.println(unContact.toString());
-		}
+		AffichageTable unAffichageTable = new AffichageTable(lesContacts);
 		unModele.deconnexion();
 	}
 }

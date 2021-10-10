@@ -15,26 +15,26 @@ public class Modele {
 	public boolean connexion()  {
 		boolean rep = false;
 		connexion = null;
-		//Méthodes
+		//Mï¿½thodes
 		try {
 			//Import du driver mysql connector
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			//Connexion à la BDD
+			//Connexion ï¿½ la BDD
 			connexion = DriverManager.getConnection("jdbc:mysql://172.16.203.211/repertoire?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC", "sio", "slam");
 			rep = true;
 		} catch (ClassNotFoundException erreur) { //Erreur du driver
 			erreur.printStackTrace();
-			System.out.println("Le Driver n'a pas pu être chargé.");
+			System.out.println("Le Driver n'a pas pu ï¿½tre chargï¿½.");
 			
 		} catch (SQLException e) { //Erreur de la connexion BDD
-			System.out.println("Erreur de la connexion à la BDD.");
+			System.out.println("Erreur de la connexion ï¿½ la BDD.");
 			e.printStackTrace();
 		}
 		return rep;
 	}
 	
 	public void deconnexion() {
-		//Fermeture de la connexion à la BDD
+		//Fermeture de la connexion ï¿½ la BDD
 		try {
 			connexion.close();
 		} catch (SQLException e) {
@@ -66,7 +66,7 @@ public class Modele {
 			String req = ("DELETE FROM contacts WHERE numero = "+ unNum);
 			count = st.executeUpdate(req);
 			if(count == 1) {
-				System.out.println(count + " ligne supprimée.");
+				System.out.println(count + " ligne supprimï¿½e.");
 			}
 			rep = true;
 		} catch (SQLException e) {
@@ -90,9 +90,9 @@ public class Modele {
 			st = connexion.createStatement();
 			req = "SELECT * FROM contacts";
 			rs = st.executeQuery(req);
-			// Pour accéder à chacune des lignes du résultat de la requête :
+			// Pour accï¿½der ï¿½ chacune des lignes du rï¿½sultat de la requï¿½te :
 			while (rs.next()) {
-				num = rs.getInt(1);
+				num = rs.getInt("Numero");
 				nom = rs.getString(2);
 				prenom = rs.getString(3);
 				email = rs.getString(4);
@@ -114,12 +114,12 @@ public class Modele {
 			//Suppression
 			count = st.executeUpdate("DELETE FROM contacts WHERE numero = 7 ");
 			if(count == 1) {
-				System.out.println(count + " Lignes supprimées.");
+				System.out.println(count + " Lignes supprimï¿½es.");
 			}
 			
 			//Selection
 			ResultSet rs = st.executeQuery("SELECT * FROM maTable");
-			// Pour accéder à chacune des lignes du résultat de la requête :
+			// Pour accï¿½der ï¿½ chacune des lignes du rï¿½sultat de la requï¿½te :
 			while (rs.next()) {
 			num = rs.getInt("numero");
 			nom = rs.getString(2);
@@ -127,6 +127,6 @@ public class Modele {
 			}
 			rs.close() ;
 			
-			//Fermeture de la connexion à la BDD
+			//Fermeture de la connexion ï¿½ la BDD
 			connexion.close();*/
 }
