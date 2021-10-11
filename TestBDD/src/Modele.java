@@ -77,6 +77,7 @@ public class Modele {
 	
 	public ArrayList<Contact> affichage() {
 		//Attributs
+		connexion();
 		ArrayList<Contact> lesContacts;
         lesContacts = new ArrayList<Contact>();
         String req;
@@ -90,7 +91,7 @@ public class Modele {
 			st = connexion.createStatement();
 			req = "SELECT * FROM contacts";
 			rs = st.executeQuery(req);
-			// Pour acc�der � chacune des lignes du r�sultat de la requ�te :
+			// Pour acceder a chacune des lignes du resultat de la requete :
 			while (rs.next()) {
 				num = rs.getInt("Numero");
 				nom = rs.getString(2);

@@ -20,6 +20,11 @@ public class AffichageTable extends JFrame implements ActionListener {
         monPanel = new JPanel ( ) ;
         monPanel.setLayout(new BorderLayout());
         
+        this.setTitle("Liste");
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(700, 370);
+        
                                      
         // TABLEAU : compos� d'une ligne de titres de colonnes (title) et de donn�es (data) 
         Object data[][]= new Object[10][10]; 
